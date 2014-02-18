@@ -1,0 +1,49 @@
+#!/usr/bin/expect -f
+
+# 使用expect自动登录服务器, ssh -> tunnel -> server
+
+set usage "cmd <local|remote> <id> <svr> <RSA-token>\n"
+
+if ($argc!=4) {
+  send_user $usage
+  exit
+}
+
+set ty [lindex $argv 0]
+set id [lindex $argv 1]
+set svr [lindex $argv 2]
+set pass [lindex $argv 3]
+
+set user username 
+set pin 123456 
+
+set local_key "OPtAhkXr4y"
+set local_svr(0) 192.168.1.44
+
+set remote_key "wxMsKXxo9WZk"
+set remote_svr(0) 192.128.4.253
+set remote_svr(1) 192.128.4.253
+
+if  [string equal -nocase $ty "local"]  {
+   set key $local_key
+   set tunnel $local_svr($id)
+} else {
+   set key $remote_key 
+   set tunnel $remote_svr($id)
+}
+
+
+send_user "ssh $user@$tunnel $svr $key\n"
+
+spawn ssh $user@$tunnel
+expect {
+	"*(yes/no)" { send "yes\r"; exp_continue }
+  	"*assword:" { send "$key\r";}
+	"*PASSCODE:" { send "$pin$pass\r" }
+}
+if { [string length $svr] > 0 } {
+	expect "*'q' to exit ):" { send "$svr\r" }
+}
+
+interact
+
