@@ -52,7 +52,6 @@ set incsearch		" Incremental search
 if filereadable("/etc/vim/vimrc.local")
 "  source /etc/vim/vimrc.local
 endif
-set ts=4
 set tags=tags;
 set autochdir
 set so=7
@@ -64,7 +63,7 @@ set autoread
 
 filetype plugin on
 filetype indent on
-set backspace=eol,start,indent
+"set backspace=eol,start,indent
 "set whichwrap+=<,>,h,l
 
 set noerrorbells
@@ -107,4 +106,8 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove<cr>
 "map <leader>m :make<cr>
 
-set hlsearch
+set hlsearch 
+set ruler
+set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
+set fencs=utf-8,gbk
+autocmd FileType c,cpp,cc,h,hpp,sh,py,php set shiftwidth=4 | set expandtab
