@@ -1,4 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/zhuhk/.vim'
-let g:netrw_dirhist_2='/home/zhuhk/thirdsrc/Python-2.7.6/Modules'
