@@ -110,4 +110,5 @@ set hlsearch
 set ruler
 set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
 set fencs=utf-8,gbk
-autocmd FileType c,cpp,cc,h,hpp,sh,py,php set shiftwidth=4 | set expandtab
+autocmd FileType c,cpp,cc,h,hpp,sh,py,php set shiftwidth=2 | set expandtab
+fileencodings=utf8,gbk
