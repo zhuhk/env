@@ -55,7 +55,7 @@ endif
 set tags=tags;
 set autochdir
 set so=7
-set sw=4
+set sw=2
 set wildmenu
 set wildignore=*.o,*~,*.pyc
 set ruler
@@ -106,9 +106,13 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove<cr>
 "map <leader>m :make<cr>
 
+" ctrl+]列出所有备选
+nmap <c-]> g<c-]> 
+
 set hlsearch 
 set ruler
-set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
+set rulerformat=%40(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
 set fencs=utf-8,gbk
-autocmd FileType c,cpp,cc,h,hpp,sh,py,php set shiftwidth=2 | set expandtab
-set fileencodings=utf8,gbk
+set fileencodings=gb18030,utf-8
+set termencoding=utf-8
+autocmd FileType c,cpp,cc,h,hpp,sh,python,php set shiftwidth=2 | set expandtab
