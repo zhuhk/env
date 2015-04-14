@@ -2,12 +2,12 @@ if [ -f ~/.agent.env ]; then
     . ~/.agent.env >/dev/null
     if ! kill -0 $SSH_AGENT_PID ; then
 	eval $(ssh-agent |tee ~/.agent.env)
-	ssh-add ~/.ssh/hadoop_rsa
+	find ~/.ssh/*_rsa*|grep -v .pub|xargs ssh-add 
     else
-        ssh-add ~/.ssh/hadoop_rsa
+	find ~/.ssh/*_rsa*|grep -v .pub|xargs ssh-add 
     fi 
 else
     eval $(ssh-agent |tee ~/.agent.env)
-    ssh-add ~/.ssh/hadoop_rsa
+    find ~/.ssh/*_rsa*|grep -v .pub|xargs ssh-add 
 fi
 
