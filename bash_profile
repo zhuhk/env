@@ -1,9 +1,9 @@
-if [ -f .bashrc ];then
-    . .bashrc
+if [ -f ~/.bashrc ];then
+    . ~/.bashrc
 fi
 
-if [ -f .ssh_agent_bashrc ];then
-    . .ssh_agent_bashrc
+if [ -f ~/.ssh_agent_bashrc ];then
+    . ~/.ssh_agent_bashrc
 fi
 #export PYTHONSTARTUP=$HOME/.pythonstartup
 export PATH=$HOME/hadoop-client/hadoop/bin:$PATH
