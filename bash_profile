@@ -3,7 +3,7 @@ if [ -f ~/.bashrc ];then
 fi
 
 if [ -f ~/.ssh_agent_bashrc ];then
-    . ~/.ssh_agent_bashrc
+    . ~/.ssh_agent_bashrc >&/dev/null
 fi
 #export PYTHONSTARTUP=$HOME/.pythonstartup
 export PATH=$HOME/hadoop-client/hadoop/bin:$PATH
@@ -11,6 +11,8 @@ export PATH=$HOME/hadoop-client/hive/bin:$PATH
 export PATH=$HOME/local/bin:$PATH
 
 alias rmswap='find ./ -name "*.swp" -exec rm {} \;'
+
+alias timesync='sudo ntpdate ntp.api.bz'
 
 ulimit -c 1000000
 
