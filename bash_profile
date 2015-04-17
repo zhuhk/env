@@ -27,3 +27,7 @@ if [ -f ~/.userbashrc ];then
 fi
 
 export LC_ALL=en_US.UTF-8
+
+alias csrbq="cscope -Rbq"
+alias csfind='find . -type f|grep -E ".cc|.cpp|.php|.py" > cscope.files'
+alias ctagsR="ctags -R --languages=C,C++,PHP,Python"

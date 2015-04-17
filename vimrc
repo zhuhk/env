@@ -53,6 +53,23 @@ if filereadable("/etc/vim/vimrc.local")
 "  source /etc/vim/vimrc.local
 endif
 set tags=tags;
+
+" for cscope
+if has("cscope")
+  set csprg=/usr/bin/cscope
+  set csto=1
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+    cs add cscope.out
+    " else add database pointed to by environment
+  elseif $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
+  endif
+  set csverb
+endif
+
 set autochdir
 set so=7
 set sw=2
@@ -76,7 +93,7 @@ syntax enable
 "set background=dark
 
 set ai "auto indent
-"set si "smart indent
+set si "smart indent
 "set wrap "wrap lines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -113,7 +130,8 @@ set hlsearch
 set ruler
 set rulerformat=%40(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
 set fencs=utf-8,gbk
-set fileencodings=gb18030,utf-8
+set fileencodings=utf-8,gb18030
 set termencoding=utf-8
 autocmd FileType c,cpp,cc,h,hpp,sh,python,php set shiftwidth=2 | set expandtab
+"autocmd FileType php set shiftwidth=4 | set expandtab
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
