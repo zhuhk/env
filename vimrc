@@ -152,3 +152,6 @@ function! AppendModeline()
 endfunction
 " 命令状态下，按下',ml’三个键自动添加modeline
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+
+" html标签配对
+runtime macros/matchit.vim 
