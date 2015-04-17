@@ -73,6 +73,7 @@ if has("cscope")
 endif
 
 set autochdir
+set ts=4
 set so=7
 set sw=2
 set wildmenu
@@ -91,20 +92,6 @@ set t_vb=
 set tm=500
 
 syntax enable
-"colorscheme desert
-"set background=dark
-
-" Append modeline after last line in buffer.
-" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
-" files.
-function! AppendModeline()
-  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
-	\ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
-  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
-  call append(line("$"), l:modeline)
-endfunction
-" 命令状态下，按下',ml’三个键自动添加modeline
-nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 set ai "auto indent
 set si "smart indent
@@ -151,4 +138,17 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set modeline
 set modelines=5
 
+"colorscheme desert
+"set background=dark
 
+" Append modeline after last line in buffer.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+" files.
+function! AppendModeline()
+  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
+	\ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+  call append(line("$"), l:modeline)
+endfunction
+" 命令状态下，按下',ml’三个键自动添加modeline
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
