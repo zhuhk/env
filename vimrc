@@ -21,6 +21,8 @@ if has("syntax")
   syntax on
 endif
 
+let mapleader=","
+
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
 set background=dark
@@ -92,6 +94,18 @@ syntax enable
 "colorscheme desert
 "set background=dark
 
+" Append modeline after last line in buffer.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+" files.
+function! AppendModeline()
+  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
+	\ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+  call append(line("$"), l:modeline)
+endfunction
+" 命令状态下，按下',ml’三个键自动添加modeline
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+
 set ai "auto indent
 set si "smart indent
 "set wrap "wrap lines
@@ -102,7 +116,6 @@ set si "smart indent
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
-
 
 " Disable highlight when <leader><cr> is pressed
 "map <silent> <leader><cr> :noh<cr>
@@ -135,3 +148,7 @@ set termencoding=utf-8
 autocmd FileType c,cpp,cc,h,hpp,sh,python,php set shiftwidth=2 | set expandtab
 "autocmd FileType php set shiftwidth=4 | set expandtab
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+set modeline
+set modelines=5
+
+
