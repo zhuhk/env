@@ -155,3 +155,4 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 " html±Í«©≈‰∂‘
 runtime macros/matchit.vim 
+set pastetoggle=<F2>
