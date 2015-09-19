@@ -29,3 +29,10 @@ export LC_ALL=en_US.UTF-8
 #alias csrbq="cscope -Rbq"
 #alias csfind='find . -type f|grep -E ".cc|.cpp|.php|.py" > cscope.files'
 alias ctagsR="ctags -R --languages=C,C++,PHP,Python"
+GHUB="$HOME/work/github"
+alias ghub="cd $GHUB"
+
+alias ls='ls -G'
+alias ll='ls -l'
+export PS1='\u@\h \w\$'
+export PROMPT_COMMAND='echo -ne "\033]0;$USER@$PWD\007"'								    
